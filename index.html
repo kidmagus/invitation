@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon 70 & Brodee 50 — November 7, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --cream: #f5f0e8;
+    --red: #e8473f;
+    --red-dark: #c73a32;
+    --muted: #888;
+    --border: #2a2a2a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--black);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 0.08em; color: var(--cream);
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--black);
+    padding: 80px 48px 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .hero-right {
+    background: var(--cream);
+    padding: 80px 60px 80px 48px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .hero-label {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.4em;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .hero-left .hero-label { color: #ffffff55; }
+  .hero-right .hero-label { color: #11111155; }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 130px);
+    line-height: 0.88; letter-spacing: 0.02em; display: block;
+  }
+  .hero-left .hero-name { color: var(--cream); }
+  .hero-right .hero-name { color: var(--black); }
+  .hero-age {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 20vw, 220px);
+    line-height: 0.82; color: var(--red); display: block; margin-top: 4px;
+  }
+  .hero-sub {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.3em;
+    text-transform: uppercase; margin-top: 16px;
+  }
+  .hero-left .hero-sub { color: #ffffff66; }
+  .hero-right .hero-sub { color: #11111166; }
+  .hero-center {
+    position: absolute;
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .center-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--cream);
+  }
+  .center-line { width: 1px; height: 80px; background: var(--border); }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.45em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 80px);
+    line-height: 0.9; letter-spacing: 0.02em;
+    color: var(--cream); margin-bottom: 48px;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown-section {
+    background: var(--red);
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .countdown-section .section-label { color: #ffffff99; }
+  .countdown-section .section-title { color: #fff; margin-bottom: 40px; }
+  .countdown-grid {
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  }
+  .countdown-item { text-align: center; }
+  .countdown-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 110px);
+    line-height: 1; color: #fff; display: block;
+  }
+  .countdown-unit {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.4em;
+    text-transform: uppercase; color: #ffffff88; margin-top: 4px;
+  }
+  .countdown-sep {
+    font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+    color: #ffffff44; align-self: center; line-height: 1;
+    padding-bottom: 20px;
+  }
+
+  /* ── EVENT DETAILS ── */
+  .details-section { background: var(--black); border-top: 1px solid var(--border); }
+  .details-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; border: 1px solid var(--border);
+  }
+  .detail-card {
+    padding: 48px 40px;
+    border-right: 1px solid var(--border);
+  }
+  .detail-card:last-child { border-right: none; }
+  .detail-icon {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.4em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 20px;
+  }
+  .detail-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 0.04em; color: var(--cream);
+    line-height: 1.1; margin-bottom: 8px;
+  }
+  .detail-sub {
+    font-size: 13px; font-weight: 300; color: var(--muted);
+    line-height: 1.7; letter-spacing: 0.04em;
+  }
+
+  /* ── RSVP ── */
+  .rsvp-section {
+    background: var(--cream);
+    color: var(--black);
+  }
+  .rsvp-section .section-label { color: var(--red); }
+  .rsvp-section .section-title { color: var(--black); }
+  .rsvp-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .rsvp-text p {
+    font-size: 15px; font-weight: 300; line-height: 1.8;
+    color: #444; max-width: 380px;
+  }
+  .rsvp-text p + p { margin-top: 16px; }
+  .rsvp-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.3em;
+    text-transform: uppercase; color: #888;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 300; color: var(--black);
+    outline: none; transition: border-color 0.2s;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--black); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .btn-submit {
+    background: var(--black); color: var(--cream);
+    border: none; padding: 18px 40px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 0.1em;
+    cursor: pointer; transition: background 0.2s;
+    margin-top: 8px; align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--red); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 0.06em; color: var(--cream);
+  }
+  .footer-logo span { color: var(--red); }
+  .footer-text {
+    font-size: 11px; font-weight: 300; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ── SUCCESS MSG ── */
+  .success-msg {
+    display: none;
+    background: var(--black); color: var(--cream);
+    padding: 20px 28px; margin-top: 16px;
+    font-size: 13px; letter-spacing: 0.08em;
+    border-left: 3px solid var(--red);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.2em; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 28px 40px; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-right { padding: 40px 28px 60px; }
+    .hero-center { display: none; }
+    .hero-name { font-size: clamp(70px, 22vw, 110px); }
+    .hero-age { font-size: clamp(110px, 34vw, 180px); }
+
+    section { padding: 60px 24px; }
+    .countdown-section { padding: 60px 24px; }
+
+    .countdown-grid { gap: 20px; }
+    .countdown-num { font-size: clamp(52px, 16vw, 80px); }
+    .countdown-sep { font-size: 52px; }
+
+    .details-grid { grid-template-columns: 1fr; }
+    .detail-card { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 24px; }
+    .detail-card:last-child { border-bottom: none; }
+
+    .rsvp-inner { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .rsvp-text p { max-width: 100%; }
+
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .hero-name { font-size: 68px; }
+    .hero-age { font-size: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mon <span>&</span> Brodee</div>
+  <div class="nav-links">
+    <a href="#countdown">Countdown</a>
+    <a href="#details">Details</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-label">Celebrating</span>
+    <span class="hero-name">Mon</span>
+    <span class="hero-age">70</span>
+    <span class="hero-sub">Years of joy & love</span>
+  </div>
+  <div class="hero-center">
+    <div class="center-line"></div>
+    <div class="center-circle">&amp;</div>
+    <div class="center-line"></div>
+  </div>
+  <div class="hero-right">
+    <span class="hero-label" style="color:#11111155;">Celebrating</span>
+    <span class="hero-name">Brodee</span>
+    <span class="hero-age">50</span>
+    <span class="hero-sub">Years of life & laughter</span>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section" id="countdown">
+  <p class="section-label">Time remaining</p>
+  <h2 class="section-title">The Big Day</h2>
+  <div class="countdown-grid">
+    <div class="countdown-item">
+      <span class="countdown-num" id="cd-days">000</span>
+      <span class="countdown-unit">Days</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-item">
+      <span class="countdown-num" id="cd-hours">00</span>
+      <span class="countdown-unit">Hours</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-item">
+      <span class="countdown-num" id="cd-mins">00</span>
+      <span class="countdown-unit">Minutes</span>
+    </div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-item">
+      <span class="countdown-num" id="cd-secs">00</span>
+      <span class="countdown-unit">Seconds</span>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section class="details-section" id="details">
+  <p class="section-label fade-in">Event details</p>
+  <h2 class="section-title fade-in">Join Us</h2>
+  <div class="details-grid">
+    <div class="detail-card fade-in">
+      <p class="detail-icon">📅 &nbsp;Date</p>
+      <p class="detail-main">November 7<br>2026</p>
+      <p class="detail-sub">Saturday evening</p>
+    </div>
+    <div class="detail-card fade-in">
+      <p class="detail-icon">🕔 &nbsp;Time</p>
+      <p class="detail-main">5:00 PM<br>Onwards</p>
+      <p class="detail-sub">Cocktails & dinner<br>Dancing to follow</p>
+    </div>
+    <div class="detail-card fade-in">
+      <p class="detail-icon">📍 &nbsp;Venue</p>
+      <p class="detail-main">Lorem Ipsum<br>Venue</p>
+      <p class="detail-sub">123 Lorem Street<br>Ipsum City</p>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp-section" id="rsvp">
+  <p class="section-label fade-in">Don't miss it</p>
+  <h2 class="section-title fade-in">RSVP</h2>
+  <div class="rsvp-inner">
+    <div class="rsvp-text fade-in">
+      <p>We'd love to have you celebrate these two incredible milestones with us — Mon's 70th and Brodee's 50th birthday.</p>
+      <p>Please let us know you're coming by filling in the form. We can't wait to celebrate with you!</p>
+      <p style="margin-top:32px; font-size:13px; letter-spacing:0.04em; color:#999;">November 7, 2026 &nbsp;·&nbsp; 5:00 PM<br>Lorem Ipsum Venue, Ipsum City</p>
+    </div>
+    <div class="fade-in">
+      <form class="rsvp-form" id="rsvpForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Juan" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="dela Cruz" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select>
+            <option>Just me</option>
+            <option>2 people</option>
+            <option>3 people</option>
+            <option>4 people</option>
+            <option>5+ people</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message (optional)</label>
+          <textarea placeholder="Leave a birthday wish or note..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send RSVP →</button>
+        <div class="success-msg" id="successMsg">
+          🎉 &nbsp;Thank you! We'll see you on November 7th.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mon <span>&</span> Brodee</div>
+  <div class="footer-text">November 7, 2026 &nbsp;·&nbsp; A double celebration</div>
+
+</footer>
+
+<script>
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2026-11-07T17:00:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '000';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    document.getElementById('cd-days').textContent = String(days).padStart(3, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // RSVP form
+  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('successMsg').style.display = 'block';
+    this.querySelector('.btn-submit').textContent = 'Sent ✓';
+    this.querySelector('.btn-submit').style.background = '#333';
+    this.querySelector('.btn-submit').style.cursor = 'default';
+  });
+</script>
+</body>
+</html>
